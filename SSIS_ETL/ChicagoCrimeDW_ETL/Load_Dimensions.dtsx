@@ -1,0 +1,1790 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/28/2026 2:01:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASUS"
+  DTS:CreatorName="ASUS\asusb"
+  DTS:DTSID="{994D457A-4897-43D5-86C5-5B515929A540}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{E020AB5A-FCBA-4679-940A-5911D9C8918B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{71B6E8A9-6AAC-438C-B62E-557E5CAA9E99}"
+      DTS:ObjectName="ASUS\MSSQLSERVER2.ChicagoCrime_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ASUS\MSSQLSERVER2;Initial Catalog=ChicagoCrime_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dimensions-{71B6E8A9-6AAC-438C-B62E-557E5CAA9E99}ASUS\MSSQLSERVER2.ChicagoCrime_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7BF1FEC8-14DF-4D2A-B54F-045FD390208D}"
+      DTS:ObjectName="ASUS\MSSQLSERVER2.ChicagoCrime_DW 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ASUS\MSSQLSERVER2;Initial Catalog=ChicagoCrime_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dimensions-{7BF1FEC8-14DF-4D2A-B54F-045FD390208D}ASUS\MSSQLSERVER2.ChicagoCrime_DW 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{13FDC810-091B-4D41-9B4C-C663152E6FEB}"
+      DTS:ObjectName="ASUS\MSSQLSERVER2.ChicagoCrime_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ASUS\MSSQLSERVER2;Initial Catalog=ChicagoCrime_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dimensions-{13FDC810-091B-4D41-9B4C-C663152E6FEB}ASUS\MSSQLSERVER2.ChicagoCrime_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimCommunityArea"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DCB3FD57-1BE3-45CF-99B0-4347B3B8DE71}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimCommunityArea"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimCommunityArea]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[community_area_number]"
+                      cachedDataType="i4"
+                      cachedName="community_area_number"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_number]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[community_area_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="community_area_name"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_name]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_name]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[per_capita_income]"
+                      cachedDataType="r8"
+                      cachedName="per_capita_income"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[per_capita_income]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[per_capita_income]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[poverty_rate]"
+                      cachedDataType="r8"
+                      cachedName="poverty_rate"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[poverty_rate]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[poverty_rate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[unemployment_rate]"
+                      cachedDataType="r8"
+                      cachedName="unemployment_rate"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unemployment_rate]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[unemployment_rate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hardship_index]"
+                      cachedDataType="r8"
+                      cachedName="hardship_index"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardship_index]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_index]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hardship_band]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="hardship_band"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardship_band]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_band]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[scd_start_date]"
+                      cachedDataType="dbDate"
+                      cachedName="scd_start_date"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[scd_start_date]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_start_date]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[scd_end_date]"
+                      cachedDataType="dbDate"
+                      cachedName="scd_end_date"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[scd_end_date]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_end_date]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_current]"
+                      cachedDataType="bool"
+                      cachedName="is_current"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_current]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_key]"
+                      dataType="i4"
+                      name="community_area_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_number]"
+                      dataType="i4"
+                      name="community_area_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="community_area_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[per_capita_income]"
+                      dataType="r8"
+                      name="per_capita_income" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[poverty_rate]"
+                      dataType="r8"
+                      name="poverty_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unemployment_rate]"
+                      dataType="r8"
+                      name="unemployment_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardship_index]"
+                      dataType="r8"
+                      name="hardship_index" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardship_band]"
+                      dataType="wstr"
+                      length="20"
+                      name="hardship_band" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[scd_start_date]"
+                      dataType="dbDate"
+                      name="scd_start_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[scd_end_date]"
+                      dataType="dbDate"
+                      name="scd_end_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="bool"
+                      name="is_current" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimCommunityArea\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vw_DimCommunityArea]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    community_area_number,
+    community_area_name,
+    per_capita_income,
+    poverty_rate,
+    unemployment_rate,
+    hardship_index,
+    CAST(hardship_band AS NVARCHAR(20)) AS hardship_band,
+    scd_start_date,
+    scd_end_date,
+    is_current
+FROM (
+    SELECT
+        CAST(ISNULL(NULLIF(TRIM(CommunityAreaNumber),''),'0')
+             AS INT)                        AS community_area_number,
+        CAST(UPPER(TRIM(CommunityAreaName))
+             AS NVARCHAR(100))              AS community_area_name,
+        CAST(ISNULL(NULLIF(TRIM(PerCapitaIncome),''),'0')
+             AS FLOAT)                      AS per_capita_income,
+        CAST(ISNULL(NULLIF(TRIM(PovertyRate),''),'0')
+             AS FLOAT)                      AS poverty_rate,
+        CAST(ISNULL(NULLIF(TRIM(UnemploymentRate),''),'0')
+             AS FLOAT)                      AS unemployment_rate,
+        CAST(ISNULL(NULLIF(TRIM(HardshipIndex),''),'0')
+             AS FLOAT)                      AS hardship_index,
+        CASE
+            WHEN CAST(ISNULL(NULLIF(TRIM(HardshipIndex),''),'0')
+                 AS FLOAT) &lt;= 25 THEN N'Low'
+            WHEN CAST(ISNULL(NULLIF(TRIM(HardshipIndex),''),'0')
+                 AS FLOAT) &lt;= 50 THEN N'Medium'
+            WHEN CAST(ISNULL(NULLIF(TRIM(HardshipIndex),''),'0')
+                 AS FLOAT) &lt;= 75 THEN N'High'
+            ELSE N'Very High'
+        END                                 AS hardship_band,
+        CAST(GETDATE() AS DATE)             AS scd_start_date,
+        CAST(NULL AS DATE)                  AS scd_end_date,
+        CAST(1 AS BIT)                      AS is_current
+    FROM ChicagoCrime_Staging.dbo.stg_census
+    WHERE CommunityAreaNumber IS NOT NULL
+      AND CommunityAreaNumber &lt;&gt; ''
+) AS src</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_number]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]"
+                      name="community_area_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_name]"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_name]"
+                      name="community_area_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[per_capita_income]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[per_capita_income]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[per_capita_income]"
+                      name="per_capita_income"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[poverty_rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[poverty_rate]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[poverty_rate]"
+                      name="poverty_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[unemployment_rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unemployment_rate]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[unemployment_rate]"
+                      name="unemployment_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_index]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardship_index]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_index]"
+                      name="hardship_index"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_band]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardship_band]"
+                      length="20"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardship_band]"
+                      name="hardship_band"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_start_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[scd_start_date]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_start_date]"
+                      name="scd_start_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_end_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[scd_end_date]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[scd_end_date]"
+                      name="scd_end_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_current]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_current]"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_current]"
+                      name="is_current"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_number]"
+                      dataType="i4"
+                      name="community_area_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="community_area_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[per_capita_income]"
+                      dataType="r8"
+                      name="per_capita_income" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[poverty_rate]"
+                      dataType="r8"
+                      name="poverty_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unemployment_rate]"
+                      dataType="r8"
+                      name="unemployment_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardship_index]"
+                      dataType="r8"
+                      name="hardship_index" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardship_band]"
+                      dataType="wstr"
+                      length="20"
+                      name="hardship_band" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[scd_start_date]"
+                      dataType="dbDate"
+                      name="scd_start_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[scd_end_date]"
+                      dataType="dbDate"
+                      name="scd_end_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_current]"
+                      dataType="bool"
+                      name="is_current" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_number]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_number]"
+                      name="community_area_number" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_name]"
+                      name="community_area_name" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[per_capita_income]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[per_capita_income]"
+                      name="per_capita_income" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[poverty_rate]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[poverty_rate]"
+                      name="poverty_rate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unemployment_rate]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unemployment_rate]"
+                      name="unemployment_rate" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardship_index]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardship_index]"
+                      name="hardship_index" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardship_band]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardship_band]"
+                      name="hardship_band" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[scd_start_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[scd_start_date]"
+                      name="scd_start_date" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[scd_end_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[scd_end_date]"
+                      name="scd_end_date" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_current]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_current]"
+                      name="is_current" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimCommunityArea.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimCommunityArea\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimCommunityArea\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimCrimeType"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C257E72B-2AC7-4684-AAD1-D375B8B7AB6F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimCrimeType"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimCrimeType\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimCrimeType]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[iucr_code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="iucr_code"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[iucr_code]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[primary_type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="primary_type"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[primary_type]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fbi_code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="fbi_code"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fbi_code]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[fbi_code]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_violent]"
+                      cachedDataType="i4"
+                      cachedName="is_violent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_violent]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_violent]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="category"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[crime_type_key]"
+                      dataType="i4"
+                      name="crime_type_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[iucr_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="iucr_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[primary_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="primary_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="200"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fbi_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="fbi_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_violent]"
+                      dataType="bool"
+                      name="is_violent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      dataType="wstr"
+                      length="50"
+                      name="category" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimCrimeType\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT
+    IUCRCode     AS iucr_code,
+    PrimaryType  AS primary_type,
+    Description  AS description,
+    FBICode      AS fbi_code,
+    IsViolent    AS is_violent,
+    Category     AS category
+FROM ChicagoCrime_Staging.dbo.stg_crime_types
+WHERE IUCRCode IS NOT NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iucr_code]"
+                      length="10"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]"
+                      name="iucr_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[primary_type]"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[primary_type]"
+                      name="primary_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[fbi_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fbi_code]"
+                      length="10"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[fbi_code]"
+                      name="fbi_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_violent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_violent]"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_violent]"
+                      name="is_violent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      length="50"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      name="category"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iucr_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="iucr_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[primary_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="primary_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="200"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fbi_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="fbi_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_violent]"
+                      dataType="i4"
+                      name="is_violent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      dataType="wstr"
+                      length="50"
+                      name="category" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iucr_code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iucr_code]"
+                      name="iucr_code" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[primary_type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[primary_type]"
+                      name="primary_type" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fbi_code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fbi_code]"
+                      name="fbi_code" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_violent]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_violent]"
+                      name="is_violent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimCrimeType.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimCrimeType\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimCrimeType\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_DimLocation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A0EFBA78-1568-4CC5-A22F-856B56AE9F3E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_DimLocation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_DimLocation\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimLocation]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimLocation\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[block]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="block"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[block]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[beat]"
+                      cachedDataType="i4"
+                      cachedName="beat"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[beat]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[district]"
+                      cachedDataType="i4"
+                      cachedName="district"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[district]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ward]"
+                      cachedDataType="i4"
+                      cachedName="ward"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ward]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[ward]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[location_desc]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="location_desc"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_desc]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[location_desc]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[longitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_key]"
+                      dataType="i4"
+                      name="location_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[block]"
+                      dataType="wstr"
+                      length="200"
+                      name="block" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[beat]"
+                      dataType="i4"
+                      name="beat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[district]"
+                      dataType="i4"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ward]"
+                      dataType="i4"
+                      name="ward" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_desc]"
+                      dataType="wstr"
+                      length="200"
+                      name="location_desc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_DimLocation\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT
+    UPPER(ISNULL(NULLIF(TRIM(Block),''),'UNKNOWN'))        AS block,
+    CAST(ISNULL(NULLIF(TRIM(Beat),''),'0') AS INT)         AS beat,
+    CAST(ISNULL(NULLIF(TRIM(District),''),'0') AS INT)     AS district,
+    CAST(ISNULL(NULLIF(TRIM(Ward),''),'0') AS INT)         AS ward,
+    UPPER(ISNULL(NULLIF(TRIM(LocationDesc),''),'UNKNOWN')) AS location_desc,
+    CAST(ISNULL(NULLIF(TRIM(Latitude),''),'0') AS FLOAT)   AS latitude,
+    CAST(ISNULL(NULLIF(TRIM(Longitude),''),'0') AS FLOAT)  AS longitude
+FROM ChicagoCrime_Staging.dbo.stg_crimes
+WHERE Block IS NOT NULL
+  AND Beat IS NOT NULL
+  AND Beat &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_DimLocation\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      name="block"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[beat]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]"
+                      name="beat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[district]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]"
+                      name="district"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[ward]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ward]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[ward]"
+                      name="ward"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[location_desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[location_desc]"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[location_desc]"
+                      name="location_desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      dataType="wstr"
+                      length="200"
+                      name="block" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[beat]"
+                      dataType="i4"
+                      name="beat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[district]"
+                      dataType="i4"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ward]"
+                      dataType="i4"
+                      name="ward" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[location_desc]"
+                      dataType="wstr"
+                      length="200"
+                      name="location_desc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      name="block" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[beat]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[beat]"
+                      name="beat" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[district]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[district]"
+                      name="district" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ward]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ward]"
+                      name="ward" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[location_desc]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[location_desc]"
+                      name="location_desc" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_DimLocation.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_DimLocation\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_DimLocation\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Dimensions"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{587F53C4-5546-454D-B99B-01DB4C942FCB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Dimensions"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7BF1FEC8-14DF-4D2A-B54F-045FD390208D}"
+          SQLTask:SqlStatementSource="DELETE FROM ChicagoCrime_DW.dbo.FactCrime;&#xA;&#xA;DELETE FROM ChicagoCrime_DW.dbo.DimCrimeType&#xA;WHERE crime_type_key &lt;&gt; -1;&#xA;&#xA;DELETE FROM ChicagoCrime_DW.dbo.DimLocation&#xA;WHERE location_key &lt;&gt; -1;&#xA;&#xA;DELETE FROM ChicagoCrime_DW.dbo.DimCommunityArea&#xA;WHERE community_area_key &lt;&gt; -1;&#xA;&#xA;-- DimDate already populated - skip it&#xA;&#xA;PRINT 'Dimensions cleared successfully';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{56263B8B-F841-448B-B6F8-B337AA34D53E}"
+      DTS:From="Package\SQL_Truncate_Dimensions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Load_DimCrimeType" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{100D75E5-8E25-4212-8F75-112B82355868}"
+      DTS:From="Package\DFT_Load_DimCrimeType"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Load_DimLocation" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{07C170BC-05CD-45FD-A06C-EFA96EA23FF9}"
+      DTS:From="Package\DFT_Load_DimLocation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Load_DimCommunityArea" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\SQL_Truncate_Dimensions"
+          TopLeft="40.8333311022985,36.3999997468789" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT_Load_DimCrimeType"
+          TopLeft="35.8333313754863,127.399999114076" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="140.533331238892,77.999999746879">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3999993671974"
+              Start="0,0"
+              End="0,41.8999993671974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8999993671974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\DFT_Load_DimLocation"
+          TopLeft="41.6666643901005,221.866665123834" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="137.149997882793,168.999999114076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.8666660097573"
+              Start="0,0"
+              End="0,45.3666660097573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.3666660097573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\DFT_Load_DimCommunityArea"
+          TopLeft="22.4999987706542,311.133331169751" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="136.483331580377,263.466665123834">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6666660459174"
+              Start="0,0"
+              End="0,40.1666660459174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1666660459174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimCrimeType">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_DimCrimeType\OLE DB Source"
+          TopLeft="49.9999972681206,71.9333328331179" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_DimCrimeType\OLE DB Destination"
+          TopLeft="282.466652369831,71.066666172478" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimCrimeType.Paths[OLE DB Source Output]"
+          TopLeft="201.999997268121,92.2999995027979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.4666551017103,0"
+              Start="0,0"
+              End="72.9666551017103,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="72.9666551017103,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimCrimeType\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimCrimeType\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimLocation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_DimLocation\OLE DB Source"
+          TopLeft="51.9999992251396,93.9999985992908" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_DimLocation\OLE DB Destination"
+          TopLeft="295.999995589256,92.999998614192" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimLocation.Paths[OLE DB Source Output]"
+          TopLeft="203.99999922514,114.299998606741">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.9999963641167,0"
+              Start="0,0"
+              End="84.4999963641167,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="84.4999963641167,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimLocation\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimLocation\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_DimCommunityArea">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_DimCommunityArea\OLE DB Destination"
+          TopLeft="311.999995350838,90.9999986439943" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_DimCommunityArea\OLE DB Source"
+          TopLeft="89.3999994188547,92.999998614192" />
+        <EdgeLayout
+          Id="Package\DFT_Load_DimCommunityArea.Paths[OLE DB Source Output]"
+          TopLeft="241.399999418855,112.799998629093">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.599995931983,0"
+              Start="0,0"
+              End="63.099995931983,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="63.099995931983,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimCommunityArea\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_DimCommunityArea\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

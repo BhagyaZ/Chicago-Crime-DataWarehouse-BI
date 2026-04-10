@@ -1,0 +1,1743 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/28/2026 3:09:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASUS"
+  DTS:CreatorName="ASUS\asusb"
+  DTS:DTSID="{157A0D75-10F6-4A00-9A9F-409CEB0AE35E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_FactCrime"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{20EB7310-6DF3-4C0E-9A74-B676E89EBF3F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4A43F648-6676-4938-92F8-59409E5E45D5}"
+      DTS:ObjectName="ASUS\MSSQLSERVER2.ChicagoCrime_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ASUS\MSSQLSERVER2;Initial Catalog=ChicagoCrime_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Load_FactCrime-{4A43F648-6676-4938-92F8-59409E5E45D5}ASUS\MSSQLSERVER2.ChicagoCrime_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F1DE7B25-1153-4F7E-A03A-698889AA188D}"
+      DTS:ObjectName="ASUS\MSSQLSERVER2.ChicagoCrime_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ASUS\MSSQLSERVER2;Initial Catalog=ChicagoCrime_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Load_FactCrime-{F1DE7B25-1153-4F7E-A03A-698889AA188D}ASUS\MSSQLSERVER2.ChicagoCrime_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_FactCrime"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9798D816-9D76-44BC-AD2D-9C9F4EAE43C7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_FactCrime"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_FactCrime\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Output].Columns[txn_create_time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Output].Columns[txn_create_time]"
+                      name="txn_create_time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup DimCommunityArea"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT community_area_key, community_area_number
+FROM ChicagoCrime_DW.dbo.DimCommunityArea
+WHERE is_current = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT community_area_key, community_area_number
+FROM ChicagoCrime_DW.dbo.DimCommunityArea
+WHERE is_current = 1) [refTable]
+where [refTable].[community_area_number] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="community_area_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="community_area_number" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input].Columns[community_area_number]"
+                      cachedDataType="i4"
+                      cachedName="community_area_number"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">community_area_number</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Match Output].Columns[community_area_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Match Output].Columns[community_area_key]"
+                      name="community_area_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">community_area_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup DimCrimeType"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT crime_type_key, iucr_code
+FROM ChicagoCrime_DW.dbo.DimCrimeType</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT crime_type_key, iucr_code
+FROM ChicagoCrime_DW.dbo.DimCrimeType) [refTable]
+where [refTable].[iucr_code] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="crime_type_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="iucr_code" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input].Columns[iucr_code]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="iucr_code"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">iucr_code</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Match Output].Columns[crime_type_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Match Output].Columns[crime_type_key]"
+                      name="crime_type_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">crime_type_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\Lookup DimDate"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup DimDate"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT date_key FROM ChicagoCrime_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT date_key FROM ChicagoCrime_DW.dbo.DimDate) [refTable]
+where [refTable].[date_key] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\Lookup DimDate.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input].Columns[date_key]"
+                      cachedDataType="i4"
+                      cachedName="date_key"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date_key</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\Lookup DimLocation"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup DimLocation"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT location_key, block, beat, district
+FROM ChicagoCrime_DW.dbo.DimLocation</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT location_key, block, beat, district
+FROM ChicagoCrime_DW.dbo.DimLocation) [refTable]
+where [refTable].[block] = ? and [refTable].[beat] = ? and [refTable].[district] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="location_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="block" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="beat" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="district" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]};#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]};#{Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input].Columns[block]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="block"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">block</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input].Columns[beat]"
+                      cachedDataType="i4"
+                      cachedName="beat"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">beat</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input].Columns[district]"
+                      cachedDataType="i4"
+                      cachedName="district"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">district</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Match Output].Columns[location_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Match Output].Columns[location_key]"
+                      name="location_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">location_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactCrime]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[case_number]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="case_number"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[case_number]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[case_number]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_key]"
+                      cachedDataType="i4"
+                      cachedName="date_key"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[arrest_made]"
+                      cachedDataType="bool"
+                      cachedName="arrest_made"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrest_made]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrest_made]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[domestic]"
+                      cachedDataType="bool"
+                      cachedName="domestic"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[domestic]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[domestic]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[txn_create_time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="txn_create_time"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      lineageId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Output].Columns[txn_create_time]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[community_area_key]"
+                      cachedDataType="i4"
+                      cachedName="community_area_key"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_key]"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Match Output].Columns[community_area_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[location_key]"
+                      cachedDataType="i4"
+                      cachedName="location_key"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_key]"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Match Output].Columns[location_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[crime_type_key]"
+                      cachedDataType="i4"
+                      cachedName="crime_type_key"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[crime_type_key]"
+                      lineageId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Match Output].Columns[crime_type_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[crime_key]"
+                      dataType="i4"
+                      name="crime_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_key]"
+                      dataType="i4"
+                      name="location_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[crime_type_key]"
+                      dataType="i4"
+                      name="crime_type_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[community_area_key]"
+                      dataType="i4"
+                      name="community_area_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[case_number]"
+                      dataType="wstr"
+                      length="20"
+                      name="case_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrest_made]"
+                      dataType="bool"
+                      name="arrest_made" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[domestic]"
+                      dataType="bool"
+                      name="domestic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_create_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_complete_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[txn_process_time_hours]"
+                      dataType="r8"
+                      name="txn_process_time_hours" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactCrime\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vw_FactCrime_Source]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactCrime\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASUS\MSSQLSERVER2.ChicagoCrime_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[case_number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[case_number]"
+                      length="20"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[case_number]"
+                      name="case_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[crime_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[crime_date]"
+                      length="50"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[crime_date]"
+                      name="crime_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      length="200"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      name="block"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iucr_code]"
+                      length="60"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[iucr_code]"
+                      name="iucr_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[beat]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[beat]"
+                      name="beat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[district]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[district]"
+                      name="district"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[ward]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ward]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[ward]"
+                      name="ward"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[location_desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[location_desc]"
+                      length="200"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[location_desc]"
+                      name="location_desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_number]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[community_area_number]"
+                      name="community_area_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrest_made]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrest_made]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrest_made]"
+                      name="arrest_made"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[domestic]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[domestic]"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].Columns[domestic]"
+                      name="domestic"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[case_number]"
+                      dataType="wstr"
+                      length="20"
+                      name="case_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[crime_date]"
+                      dataType="wstr"
+                      length="50"
+                      name="crime_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      dataType="wstr"
+                      length="200"
+                      name="block" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[iucr_code]"
+                      dataType="wstr"
+                      length="60"
+                      name="iucr_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[beat]"
+                      dataType="i4"
+                      name="beat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[district]"
+                      dataType="i4"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ward]"
+                      dataType="i4"
+                      name="ward" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[location_desc]"
+                      dataType="wstr"
+                      length="200"
+                      name="location_desc" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[community_area_number]"
+                      dataType="i4"
+                      name="community_area_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrest_made]"
+                      dataType="bool"
+                      name="arrest_made" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[domestic]"
+                      dataType="bool"
+                      name="domestic" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[case_number]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[case_number]"
+                      name="case_number" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[crime_date]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[crime_date]"
+                      name="crime_date" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      name="date_key" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      name="block" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iucr_code]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[iucr_code]"
+                      name="iucr_code" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[beat]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[beat]"
+                      name="beat" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[district]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[district]"
+                      name="district" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ward]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ward]"
+                      name="ward" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[location_desc]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[location_desc]"
+                      name="location_desc" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_number]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[community_area_number]"
+                      name="community_area_number" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrest_made]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrest_made]"
+                      name="arrest_made" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[domestic]"
+                      dataType="bool"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[domestic]"
+                      name="domestic" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[Derived Column Output]"
+              endId="Package\DFT_Load_FactCrime\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_FactCrime\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[Lookup Match Output]"
+              endId="Package\DFT_Load_FactCrime\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[Lookup Match Output1]"
+              endId="Package\DFT_Load_FactCrime\Lookup DimLocation.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactCrime\Lookup DimDate.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[Lookup Match Output2]"
+              endId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactCrime\Lookup DimLocation.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[Lookup Match Output3]"
+              endId="Package\DFT_Load_FactCrime\Lookup DimCommunityArea.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactCrime\Lookup DimCrimeType.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactCrime.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_FactCrime\Lookup DimDate.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_FactCrime\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_FactCrime"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E5087534-276B-449C-84EA-1852F8E101B6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_FactCrime"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4A43F648-6676-4938-92F8-59409E5E45D5}"
+          SQLTask:SqlStatementSource="DELETE FROM ChicagoCrime_DW.dbo.FactCrime;&#xA;PRINT 'FactCrime cleared successfully';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{69C44FC4-F1BF-4A8E-BDBA-78D4D7C7ED5E}"
+      DTS:From="Package\SQL_Truncate_FactCrime"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Load_FactCrime" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\DFT_Load_FactCrime"
+          TopLeft="66.6666630241607,150.799998951356" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\SQL_Truncate_FactCrime"
+          TopLeft="80.8333289167949,33.799999764959" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="160.349995970478,75.399999764959">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.3999991863966"
+              Start="0,0"
+              End="0,67.8999991863966">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.8999991863966" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_FactCrime">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\DFT_Load_FactCrime\Lookup DimLocation"
+          TopLeft="504.907386376995,38.8222223045874" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_FactCrime\OLE DB Source"
+          TopLeft="71.6666627509728,44.1999996926387" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Load_FactCrime\Derived Column"
+          TopLeft="477.314788735484,158.807406735766" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_FactCrime\OLE DB Destination"
+          TopLeft="180.648138277969,161.429633662826" />
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\DFT_Load_FactCrime\Lookup DimCommunityArea"
+          TopLeft="742.036996493923,158.999999327019" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\DFT_Load_FactCrime\Lookup DimDate"
+          TopLeft="290.555539680301,41.5999997107185" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\DFT_Load_FactCrime\Lookup DimCrimeType"
+          TopLeft="758.148106724762,34.4074079531579" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[OLE DB Source Output]"
+          TopLeft="223.666662750973,63.6999997016786">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.8888769293278,0"
+              Start="0,0"
+              End="59.3888769293278,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.3888769293278,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[Lookup Match Output3]"
+          TopLeft="848.492551609342,76.007407953158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.9925913738614"
+              Start="0,0"
+              End="0,75.4925913738614">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.4925913738614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,31.9416081869307,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[Lookup Match Output2]"
+          TopLeft="678.507386376995,57.4148151288727">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.6407203477668,0"
+              Start="0,0"
+              End="72.1407203477668,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="72.1407203477668,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.1210265448666,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[Lookup Match Output1]"
+          TopLeft="446.555539680301,61.011111007653">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.3518466966942,0"
+              Start="0,0"
+              End="50.8518466966942,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.8518466966942,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-22.7654633704029,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[Lookup Match Output]"
+          TopLeft="742.036996493923,179.703703031393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-111.922207758438,0"
+              Start="0,0"
+              End="-104.422207758438,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-104.422207758438,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.402490597969,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_FactCrime.Paths[Derived Column Output]"
+          TopLeft="477.314788735484,180.918520199296">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.466650457515,0"
+              Start="0,0"
+              End="-117.966650457515,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-117.966650457515,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\Lookup DimLocation">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\Lookup DimCommunityArea">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\Lookup DimDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactCrime\Lookup DimCrimeType">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

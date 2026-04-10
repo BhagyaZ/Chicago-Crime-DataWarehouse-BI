@@ -1,0 +1,114 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Chicago Crime DW.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Location.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Dim Location.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Date.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Dim Date.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Community Area.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Dim Community Area.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Crime Type.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Dim Crime Type.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{B5D45357-DFB6-F8FC-3BB9-83FFB3451FC5}|ChicagoCrime_Cube.dwproj|solutionrelative:Chicago Crime DW.dsv||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Chicago Crime DW.cube [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.cube",
+              "RelativeDocumentMoniker": "Chicago Crime DW.cube",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.cube [Design]",
+              "RelativeToolTip": "Chicago Crime DW.cube [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-30T13:05:19.805Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dim Location.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Location.dim",
+              "RelativeDocumentMoniker": "Dim Location.dim",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Location.dim [Design]",
+              "RelativeToolTip": "Dim Location.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-31T09:54:41.107Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dim Date.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Date.dim",
+              "RelativeDocumentMoniker": "Dim Date.dim",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Date.dim [Design]",
+              "RelativeToolTip": "Dim Date.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-30T17:28:43.594Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dim Community Area.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Community Area.dim",
+              "RelativeDocumentMoniker": "Dim Community Area.dim",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Community Area.dim [Design]",
+              "RelativeToolTip": "Dim Community Area.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-31T09:56:48.522Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dim Crime Type.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Dim Crime Type.dim",
+              "RelativeDocumentMoniker": "Dim Crime Type.dim",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\ChicagoCrimeDW\\DataWarehouse_IT23615366\\ChicagoCrime_Cube\\Dim Crime Type.dim [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\ChicagoCrimeDW\\DataWarehouse_IT23615366\\ChicagoCrime_Cube\\Dim Crime Type.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-30T18:20:34.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Chicago Crime DW.dsv [Design]",
+              "DocumentMoniker": "C:\\Users\\asusb\\OneDrive\\Desktop\\DWBI_Assignment_2_Answer_IT23615366\\DWBI_Assignment_2_Answer_IT23615366 yehh\\CubeProject_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.dsv",
+              "RelativeDocumentMoniker": "Chicago Crime DW.dsv",
+              "ToolTip": "C:\\Users\\asusb\\OneDrive\\Desktop\\ChicagoCrimeDW\\DataWarehouse_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.dsv [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\ChicagoCrimeDW\\DataWarehouse_IT23615366\\ChicagoCrime_Cube\\Chicago Crime DW.dsv [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-30T12:54:45.705Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
